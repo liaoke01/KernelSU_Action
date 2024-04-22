@@ -40,8 +40,11 @@ jobs:
         git config --global user.email "bot@example.com"
         git config --global user.name "bot"
 
-        curl -LSs "https://raw.githubusercontent.com/tiann/KernelSU/main/kernel/setup.sh" | bash -
+        sed -i s/'CONFIG_LTO_CLANG=y'/'CONFIG_LTO_CLANG=n'/g $GITHUB_WORKSPACE/kernel/arch/arm64/configs/b1c1_defconfig
+        echo CONFIG_LTO_NONE=y >> $GITHUB_WORKSPACE/kernel/arch/arm64/configs/b1c1_defconfig
+        echo CONFIG_LTO=n >> $GITHUB_WORKSPACE/kernel/arch/arm64/configs/b1c1_defconfig
         make O=out ARCH=arm64 CC=clang AR=llvm-ar NM=llvm-nm OBJCOPY=llvm-objcopy OBJDUMP=llvm-objdump READELF=llvm-readelf OBJSIZE=llvm-size STRIP=llvm-strip HOSTCC=clang HOSTCXX=clang++ HOSTLD=ld.lld CLANG_TRIPLE=aarch64-linux-gnu- CROSS_COMPILE=aarch64-linux-android- CROSS_COMPILE_ARM32=arm-linux-androideabi- b1c1_defconfig
+        curl -LSs "https://raw.githubusercontent.com/tiann/KernelSU/main/kernel/setup.sh" | bash -
         make O=out ARCH=arm64 CC=clang AR=llvm-ar NM=llvm-nm OBJCOPY=llvm-objcopy OBJDUMP=llvm-objdump READELF=llvm-readelf OBJSIZE=llvm-size STRIP=llvm-strip HOSTCC=clang HOSTCXX=clang++ HOSTLD=ld.lld CLANG_TRIPLE=aarch64-linux-gnu- CROSS_COMPILE=aarch64-linux-android- CROSS_COMPILE_ARM32=arm-linux-androideabi-
     
     - name: Upload the zip
