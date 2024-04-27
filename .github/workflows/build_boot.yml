@@ -41,6 +41,7 @@ jobs:
         git config --global user.name "jiamils"
 
         curl -LSs "https://raw.githubusercontent.com/tiann/KernelSU/main/kernel/setup.sh" | bash -
+                sed -i s/'CONFIG_LTO_CLANG=y'/'CONFIG_LTO_CLANG=n'/g $GITHUB_WORKSPACE/kernel/arch/arm64/configs/b1c1_defconfig
         echo CONFIG_LTO_NONE=y >> $GITHUB_WORKSPACE/kernel/arch/arm64/configs/b1c1_defconfig
         echo CONFIG_KPROBES=y >> $GITHUB_WORKSPACE/kernel/arch/arm64/configs/b1c1_defconfig
         echo CONFIG_HAVE_KPROBES=y >> $GITHUB_WORKSPACE/kernel/arch/arm64/configs/b1c1_defconfig
