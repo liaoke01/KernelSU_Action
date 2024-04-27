@@ -62,16 +62,16 @@ jobs:
     
     - name: Repack Boot.img
       run: |
-      cd $GITHUB_WORKSPACE
-      cd kernel
-      mkdir packboot
-      wget https://raw.githubusercontent.com/jiamils/KernelSU_Action/main/magiskboot
-      chmod a+x magiskboot
-      cd packboot
-      wget https://mirrorbits.lineageos.org/full/crosshatch/20240423/boot.img
-      ../magiskboot unpack boot.img
-      cp ../out/arch/arm64/boot/Image.lz4 kernel
-      ../magiskboot repack boot.img
+       cd $GITHUB_WORKSPACE
+       cd kernel
+       mkdir packboot
+       wget https://raw.githubusercontent.com/jiamils/KernelSU_Action/main/magiskboot
+       chmod a+x magiskboot
+       cd packboot
+       wget https://mirrorbits.lineageos.org/full/crosshatch/20240423/boot.img
+       ../magiskboot unpack boot.img
+       cp ../out/arch/arm64/boot/Image.lz4 kernel
+       ../magiskboot repack boot.img
 
     - name: Upload the zip
       uses: actions/upload-artifact@v4
