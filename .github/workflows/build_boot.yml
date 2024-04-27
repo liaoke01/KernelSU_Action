@@ -46,7 +46,6 @@ jobs:
         echo CONFIG_HAVE_KPROBES=y >> $GITHUB_WORKSPACE/kernel/arch/arm64/configs/b1c1_defconfig
         echo CONFIG_KPROBE_EVENTS=y >> $GITHUB_WORKSPACE/kernel/arch/arm64/configs/b1c1_defconfig
         sed -i 's/CONFIG_QCA_CLD_WLAN=m/CONFIG_QCA_CLD_WLAN=y/g' $GITHUB_WORKSPACE/kernel/arch/arm64/configs/b1c1_defconfig
-        sed -i s/=m/=y/g $GITHUB_WORKSPACE/kernel/arch/arm64/configs/b1c1_defconfig
         sed -i 's/PINCTRL_WCD=m/PINCTRL_WCD=y/g' $GITHUB_WORKSPACE/kernel/techpack/audio/config/b1c1auto.conf
         sed -i 's/WCD_CORE=m/WCD_CORE=y/g' $GITHUB_WORKSPACE/kernel/techpack/audio/config/b1c1auto.conf
         sed -i 's/WCD_DSP_GLINK=m/WCD_DSP_GLINK=y/g' $GITHUB_WORKSPACE/kernel/techpack/audio/config/b1c1auto.conf
@@ -55,11 +54,8 @@ jobs:
         sed -i 's/SND_SOC_WCD_SPI=m/SND_SOC_WCD_SPI=y/g' $GITHUB_WORKSPACE/kernel/techpack/audio/config/b1c1auto.conf
         sed -i 's/SND_SOC_CS35L36=m/SND_SOC_CS35L36=y/g' $GITHUB_WORKSPACE/kernel/techpack/audio/config/b1c1auto.conf
         sed -i 's/SND_SOC_SDM845=m/SND_SOC_SDM845=y/g' $GITHUB_WORKSPACE/kernel/techpack/audio/config/b1c1auto.conf
-        echo "CONFIG_KSU=y" >> $GITHUB_WORKSPACE/kernel/arch/arm64/configs/b1c1_defconfig
-        echo "CONFIG_MODULES=y" >> $GITHUB_WORKSPACE/kernel/arch/arm64/configs/b1c1_defconfig
-        echo "CONFIG_KPROBES=y" >> $GITHUB_WORKSPACE/kernel/arch/arm64/configs/b1c1_defconfig
-        echo "CONFIG_HAVE_KPROBES=y" >> $GITHUB_WORKSPACE/kernel/arch/arm64/configs/b1c1_defconfig
-        echo "CONFIG_KPROBE_EVENTS=y" >> $GITHUB_WORKSPACE/kernel/arch/arm64/configs/b1c1_defconfig
+        echo CONFIG_KSU=y >> $GITHUB_WORKSPACE/kernel/arch/arm64/configs/b1c1_defconfig
+        echo CONFIG_MODULES=y >> $GITHUB_WORKSPACE/kernel/arch/arm64/configs/b1c1_defconfig
         make O=out ARCH=arm64 CC=clang AR=llvm-ar NM=llvm-nm OBJCOPY=llvm-objcopy OBJDUMP=llvm-objdump READELF=llvm-readelf OBJSIZE=llvm-size STRIP=llvm-strip HOSTCC=clang HOSTCXX=clang++ HOSTLD=ld.lld CLANG_TRIPLE=aarch64-linux-gnu- CROSS_COMPILE=aarch64-linux-android- CROSS_COMPILE_ARM32=arm-linux-androideabi- b1c1_defconfig
         make O=out ARCH=arm64 CC=clang AR=llvm-ar NM=llvm-nm OBJCOPY=llvm-objcopy OBJDUMP=llvm-objdump READELF=llvm-readelf OBJSIZE=llvm-size STRIP=llvm-strip HOSTCC=clang HOSTCXX=clang++ HOSTLD=ld.lld CLANG_TRIPLE=aarch64-linux-gnu- CROSS_COMPILE=aarch64-linux-android- CROSS_COMPILE_ARM32=arm-linux-androideabi-
     
