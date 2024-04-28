@@ -71,25 +71,12 @@ jobs:
       with:
         name: new-boot.img
         path: |
-          kernel/paclboot/new-boot.img
+          kernel/packboot/new-boot.img
           
     - name: Upload the ko1
       uses: actions/upload-artifact@v4
       with:
-        name: ko-mod1
+        name: ko-mod
         path: |
-          kernel/techpack/audio/soc/pinctrl-wcd.ko
+          kernel/techpack/audio/*
           
-    - name: Upload the ko2
-      uses: actions/upload-artifact@v4
-      with:
-        name: ko-mod2
-        path: |
-          kernel/techpack/audio/ipc/wcd-dsp-glink.ko
-          
-    - name: Upload the kozip
-      uses: actions/upload-artifact@v4
-      with:
-        name: ko-mod2
-        path: |
-          kernel/techpack/audio/asoc/codecs/*
