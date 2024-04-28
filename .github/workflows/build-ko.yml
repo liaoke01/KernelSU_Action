@@ -41,14 +41,7 @@ jobs:
         git config --global user.name "bot"
 
         sed -i s/'CONFIG_LTO_CLANG=y'/'CONFIG_LTO_CLANG=n'/g $GITHUB_WORKSPACE/kernel/arch/arm64/configs/b1c1_defconfig
-        sed -i s/'PINCTRL_WCD=m'/'PINCTRL_WCD=y'/g $GITHUB_WORKSPACE/kernel/techpack/audio/config/b1c1auto.conf
-        sed -i s/'CORE=m'/'CORE=y'/g $GITHUB_WORKSPACE/kernel/techpack/audio/config/b1c1auto.conf
-        sed -i s/'WCD_DSP_GLINK=m'/'WCD_DSP_GLINK=y'/g $GITHUB_WORKSPACE/kernel/techpack/audio/config/b1c1auto.conf
-        sed -i s/'WCD9XXX_V2=m'/'WCD9XXX_V2=y'/g $GITHUB_WORKSPACE/kernel/techpack/audio/config/b1c1auto.conf
-        sed -i s/'SND_SOC_WCD934X=m'/'SND_SOC_WCD934X=y'/g $GITHUB_WORKSPACE/kernel/techpack/audio/config/b1c1auto.conf
-        sed -i s/'SND_SOC_WCD_SPI=m'/'SND_SOC_WCD_SPI=y'/g $GITHUB_WORKSPACE/kernel/techpack/audio/config/b1c1auto.conf
-        sed -i s/'SND_SOC_CS35L36=m'/'SND_SOC_CS35L36=y'/g $GITHUB_WORKSPACE/kernel/techpack/audio/config/b1c1auto.conf
-        sed -i s/'SND_SOC_SDM845=m'/'SND_SOC_SDM845=y'/g $GITHUB_WORKSPACE/kernel/techpack/audio/config/b1c1auto.conf
+        sed -i s/'=m'/'=y'/g $GITHUB_WORKSPACE/kernel/techpack/audio/config/b1c1auto.conf
         echo CONFIG_LTO_NONE=y >> $GITHUB_WORKSPACE/kernel/arch/arm64/configs/b1c1_defconfig
         echo CONFIG_LTO=n >> $GITHUB_WORKSPACE/kernel/arch/arm64/configs/b1c1_defconfig
         sed -i s/'=m'/'=y'/g $GITHUB_WORKSPACE/kernel/arch/arm64/configs/b1c1_defconfig
@@ -78,6 +71,5 @@ jobs:
       uses: actions/upload-artifact@v4
       with:
         name: new-boot.img
-        path: |
-          kernel/packboot/new-boot.img
+        path: kernel/packboot/new-boot.img
           
