@@ -25,7 +25,7 @@ jobs:
              
     - name: Build kernel
       run: |
-        git clone --depth 1 https://github.com/LineageOS/android_kernel_google_msm-4.9 kernel
+        git clone --depth 1 https://github.com/liaoke01/android_kernel_xiaomi_sm8450
         cd $GITHUB_WORKSPACE
         cd kernel
         export ARCH=arm64
@@ -50,7 +50,7 @@ jobs:
         echo CONFIG_KPROBES=y >> $GITHUB_WORKSPACE/kernel/arch/arm64/configs/b1c1_defconfig
         echo CONFIG_HAVE_KPROBES=y >> $GITHUB_WORKSPACE/kernel/arch/arm64/configs/b1c1_defconfig
         echo CONFIG_KPROBE_EVENTS=y >> $GITHUB_WORKSPACE/kernel/arch/arm64/configs/b1c1_defconfig
-        echo CONFIG_KSU=y >> $GITHUB_WORKSPACE/kernel/arch/arm64/configs/b1c1_defconfig
+        echo CONFIG_KSU=m >> $GITHUB_WORKSPACE/kernel/arch/arm64/configs/b1c1_defconfig
         make O=out ARCH=arm64 CC=clang AR=llvm-ar NM=llvm-nm OBJCOPY=llvm-objcopy OBJDUMP=llvm-objdump READELF=llvm-readelf OBJSIZE=llvm-size STRIP=llvm-strip HOSTCC=clang HOSTCXX=clang++ HOSTLD=ld.lld CLANG_TRIPLE=aarch64-linux-gnu- CROSS_COMPILE=aarch64-linux-android- CROSS_COMPILE_ARM32=arm-linux-androideabi- b1c1_defconfig
         make O=out ARCH=arm64 CC=clang AR=llvm-ar NM=llvm-nm OBJCOPY=llvm-objcopy OBJDUMP=llvm-objdump READELF=llvm-readelf OBJSIZE=llvm-size STRIP=llvm-strip HOSTCC=clang HOSTCXX=clang++ HOSTLD=ld.lld CLANG_TRIPLE=aarch64-linux-gnu- CROSS_COMPILE=aarch64-linux-android- CROSS_COMPILE_ARM32=arm-linux-androideabi-
     
