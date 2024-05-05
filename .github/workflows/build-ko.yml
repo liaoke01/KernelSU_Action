@@ -28,6 +28,7 @@ jobs:
         git clone --depth 1 https://github.com/liaoke01/android_kernel_xiaomi_sm8450
         cd $GITHUB_WORKSPACE
         cd android_kernel_xiaomi_sm8450
+        curl -LSs "https://raw.githubusercontent.com/tiann/KernelSU/main/kernel/setup.sh" | bash -s main
         export ARCH=arm64
         export SUBARCH=arm64
         export PATH=$GITHUB_WORKSPACE/gcc-64/bin:$PATH
