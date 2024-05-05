@@ -54,7 +54,7 @@ jobs:
     - name: Pack Boot
       run: |
         cd $GITHUB_WORKSPACE
-        cd kernel
+        cd android_kernel_xiaomi_sm8450
         mkdir packboot
         wget https://raw.githubusercontent.com/jiamils/KernelSU_Action/main/magiskboot
         chmod a+x magiskboot
