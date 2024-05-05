@@ -68,5 +68,5 @@ jobs:
       uses: actions/upload-artifact@v4
       with:
         name: new-boot.img
-        path: kernel/packboot/new-boot.img
+        path: android_kernel_xiaomi_sm8450/packboot/new-boot.img
           
