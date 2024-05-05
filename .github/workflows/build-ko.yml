@@ -46,9 +46,6 @@ jobs:
         sed -i s/'=m'/'=y'/g $GITHUB_WORKSPACE/android_kernel_xiaomi_sm8450/arch/arm64/configs/gki_defconfig
         curl -LSs "https://raw.githubusercontent.com/tiann/KernelSU/main/kernel/setup.sh" | bash -
         echo CONFIG_MODULES=y >> $GITHUB_WORKSPACE/android_kernel_xiaomi_sm8450/arch/arm64/configs/gki_defconfig
-        echo CONFIG_KPROBES=y >> $GITHUB_WORKSPACE/android_kernel_xiaomi_sm8450/arch/arm64/configs/gki_defconfig
-        echo CONFIG_HAVE_KPROBES=y >> $GITHUB_WORKSPACE/android_kernel_xiaomi_sm8450/arch/arm64/gki_defconfig
-        echo CONFIG_KPROBE_EVENTS=y >> $GITHUB_WORKSPACE/android_kernel_xiaomi_sm8450/arch/arm64/gki_defconfig
         echo CONFIG_KSU=m >> $GITHUB_WORKSPACE/android_kernel_xiaomi_sm8450/arch/arm64/configs/gki_defconfig
         make O=out ARCH=arm64 CC=clang AR=llvm-ar NM=llvm-nm OBJCOPY=llvm-objcopy OBJDUMP=llvm-objdump READELF=llvm-readelf OBJSIZE=llvm-size STRIP=llvm-strip HOSTCC=clang HOSTCXX=clang++ HOSTLD=ld.lld CLANG_TRIPLE=aarch64-linux-gnu- CROSS_COMPILE=aarch64-linux-android- CROSS_COMPILE_ARM32=arm-linux-androideabi- gki_defconfig
         make O=out ARCH=arm64 CC=clang AR=llvm-ar NM=llvm-nm OBJCOPY=llvm-objcopy OBJDUMP=llvm-objdump READELF=llvm-readelf OBJSIZE=llvm-size STRIP=llvm-strip HOSTCC=clang HOSTCXX=clang++ HOSTLD=ld.lld CLANG_TRIPLE=aarch64-linux-gnu- CROSS_COMPILE=aarch64-linux-android- CROSS_COMPILE_ARM32=arm-linux-androideabi-
